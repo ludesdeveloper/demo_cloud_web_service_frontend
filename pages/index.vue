@@ -39,21 +39,30 @@ export default {
   }),
   created() {
     axios
-      .get('backendgolang:1323/users')
+      .get('https://backendgolang-ludesdeveloper.cloud.okteto.net/users')
       .then((response) => (this.users = response.data))
     // .then((response) => console.log(response))
   },
   methods: {
     createUser() {
-      axios.post('backendgolang:1323/users', this.user)
+      axios.post(
+        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
+        this.user
+      )
       this.users.push(this.user)
     },
     updateUser(user) {
-      axios.post('backendgolang:1323/users/updateuser', user)
+      axios.post(
+        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users/updateuser',
+        user
+      )
       // this.users.push(this.user)
     },
     deleteUser(index, nik) {
-      axios.post('backendgolang:1323/users/deleteuser', { NIK: nik })
+      axios.post(
+        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users/deleteuser',
+        { NIK: nik }
+      )
       this.users.splice(index)
     },
   },
