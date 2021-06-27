@@ -59,11 +59,14 @@ export default {
       // this.users.push(this.user)
     },
     deleteUser(index, nik) {
-      axios
-        .delete('https://backendgolang-ludesdeveloper.cloud.okteto.net/users', {
-          NIK: nik,
-        })
-        .then((response) => console.log(response))
+      axios.delete(
+        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
+        {
+          data: {
+            NIK: nik,
+          },
+        }
+      )
       this.users.splice(index)
     },
   },
