@@ -3,12 +3,22 @@
     <br />
     <button @click="createUser">Create</button>
     <label for="NIK">NIK</label>
-    <input v-model="user.NIK" type="text" id="NIK" name="NIK" /><br /><br />
+    <input
+      v-model="userCreate.NIK"
+      type="text"
+      id="NIK"
+      name="NIK"
+    /><br /><br />
     <label for="Name">Name</label>
-    <input v-model="user.Name" type="text" id="Name" name="Name" /><br /><br />
+    <input
+      v-model="userCreate.Name"
+      type="text"
+      id="Name"
+      name="Name"
+    /><br /><br />
     <label for="Company">Company</label>
     <input
-      v-model="user.Company"
+      v-model="userCreate.Company"
       type="text"
       id="Company"
       name="Company"
@@ -36,6 +46,11 @@ export default {
       Name: '',
       Company: '',
     },
+    userCreate: {
+      NIK: '',
+      Name: '',
+      Company: '',
+    },
   }),
   created() {
     axios
@@ -44,12 +59,17 @@ export default {
     // .then((response) => console.log(response))
   },
   methods: {
-    createUser() {
-      axios.post(
+    async createUser() {
+      await axios.post(
         'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
-        this.user
+        this.userCreate
       )
-      this.users.push(this.user)
+      await this.users.push(this.userCreate)
+      this.userCreate = {
+        NIK: '',
+        Name: '',
+        Company: '',
+      }
     },
     updateUser(user) {
       axios.put(
