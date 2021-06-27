@@ -52,17 +52,18 @@ export default {
       this.users.push(this.user)
     },
     updateUser(user) {
-      axios.post(
-        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users/updateuser',
+      axios.put(
+        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
         user
       )
       // this.users.push(this.user)
     },
     deleteUser(index, nik) {
-      axios.post(
-        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users/deleteuser',
-        { NIK: nik }
-      )
+      axios
+        .delete('https://backendgolang-ludesdeveloper.cloud.okteto.net/users', {
+          NIK: nik,
+        })
+        .then((response) => console.log(response))
       this.users.splice(index)
     },
   },
