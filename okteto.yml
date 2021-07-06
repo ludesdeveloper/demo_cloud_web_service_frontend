@@ -1,0 +1,7 @@
+name: frontend
+command: sh
+sync:
+- .:/usr/src/nuxt-app
+forward:
+- 9229:9229
+- 3000:3000

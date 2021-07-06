@@ -54,14 +54,14 @@ export default {
   }),
   created() {
     axios
-      .get('https://backendgolang-ludesdeveloper.cloud.okteto.net/users')
+      .get('https://golang-service-ludesdeveloper.cloud.okteto.net/users')
       .then((response) => (this.users = response.data))
     // .then((response) => console.log(response))
   },
   methods: {
     async createUser() {
       await axios.post(
-        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
+        'https://golang-service-ludesdeveloper.cloud.okteto.net/users',
         this.userCreate
       )
       await this.users.push(this.userCreate)
@@ -73,14 +73,14 @@ export default {
     },
     updateUser(user) {
       axios.put(
-        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
+        'https://golang-service-ludesdeveloper.cloud.okteto.net/users',
         user
       )
       // this.users.push(this.user)
     },
     deleteUser(index, nik) {
       axios.delete(
-        'https://backendgolang-ludesdeveloper.cloud.okteto.net/users',
+        'https://golang-service-ludesdeveloper.cloud.okteto.net/users',
         {
           data: {
             NIK: nik,
